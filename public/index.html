@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reportheld API - Testing Interface</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <h1>Reportheld REST API</h1>
+          <p class="subtitle">Week 1 Prototype - Testing Interface</p>
+        </div>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span id="api-status">Checking...</span>
+        </div>
+      </header>
+
+      <!-- Navigation Tabs -->
+      <nav class="tabs">
+        <button class="tab-button active" data-tab="templates">
+          Templates
+        </button>
+        <button class="tab-button" data-tab="protocols">Protocols</button>
+        <button class="tab-button" data-tab="items">Items</button>
+      </nav>
+
+      <!-- Content Area -->
+      <main class="content">
+        <!-- Templates Tab -->
+        <div id="templates-tab" class="tab-content active">
+          <div class="tab-header">
+            <h2>Templates</h2>
+            <p>Reusable report templates</p>
+          </div>
+
+          <div class="endpoint-section">
+            <h3>Endpoints</h3>
+            <div class="endpoint-grid">
+              <button
+                class="endpoint-btn"
+                onclick="fetchData('/api/v1/templates', 'templates-response')"
+              >
+                GET /api/v1/templates
+              </button>
+              <button
+                class="endpoint-btn"
+                onclick="
+                  fetchData('/api/v1/templates/tmpl-001', 'templates-response')
+                "
+              >
+                GET /api/v1/templates/:id
+              </button>
+              <button
+                class="endpoint-btn"
+                onclick="
+                  fetchData(
+                    '/api/v1/templates/category/safety',
+                    'templates-response',
+                  )
+                "
+              >
+                GET /api/v1/templates/category/:category
+              </button>
+            </div>
+          </div>
+
+          <div class="response-section">
+            <h3>Response</h3>
+            <div id="templates-response" class="response-box">
+              <p class="placeholder">
+                Click an endpoint button to see the response
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Protocols Tab -->
+        <div id="protocols-tab" class="tab-content">
+          <div class="tab-header">
+            <h2>Protocols</h2>
+            <p>Standardized procedures and workflows</p>
+          </div>
+
+          <div class="endpoint-section">
+            <h3>Endpoints</h3>
+            <div class="endpoint-grid">
+              <button
+                class="endpoint-btn"
+                onclick="fetchData('/api/v1/protocols', 'protocols-response')"
+              >
+                GET /api/v1/protocols
+              </button>
+              <button
+                class="endpoint-btn"
+                onclick="
+                  fetchData('/api/v1/protocols/prot-042', 'protocols-response')
+                "
+              >
+                GET /api/v1/protocols/:id
+              </button>
+              <button
+                class="endpoint-btn"
+                onclick="
+                  fetchData(
+                    '/api/v1/protocols/type/inspection',
+                    'protocols-response',
+                  )
+                "
+              >
+                GET /api/v1/protocols/type/:type
+              </button>
+            </div>
+          </div>
+
+          <div class="response-section">
+            <h3>Response</h3>
+            <div id="protocols-response" class="response-box">
+              <p class="placeholder">
+                Click an endpoint button to see the response
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Items Tab -->
+        <div id="items-tab" class="tab-content">
+          <div class="tab-header">
+            <h2>Items</h2>
+            <p>Physical assets and equipment</p>
+          </div>
+
+          <div class="endpoint-section">
+            <h3>Endpoints</h3>
+            <div class="endpoint-grid">
+              <button
+                class="endpoint-btn"
+                onclick="fetchData('/api/v1/items', 'items-response')"
+              >
+                GET /api/v1/items
+              </button>
+              <button
+                class="endpoint-btn"
+                onclick="fetchData('/api/v1/items/item-789', 'items-response')"
+              >
+                GET /api/v1/items/:id
+              </button>
+              <button
+                class="endpoint-btn"
+                onclick="
+                  fetchData(
+                    '/api/v1/items/status/operational',
+                    'items-response',
+                  )
+                "
+              >
+                GET /api/v1/items/status/:status
+              </button>
+            </div>
+          </div>
+
+          <div class="response-section">
+            <h3>Response</h3>
+            <div id="items-response" class="response-box">
+              <p class="placeholder">
+                Click an endpoint button to see the response
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>Reportheld REST API v1.0.0 - Week 1 Prototype</p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
