@@ -12,7 +12,7 @@ import itemsRoutes from "./routes/items.routes";
 import { errorHandler, notFoundHandler } from "./middleware/error.middleware";
 
 const app: Application = express();
-const PORT = process.env.PORT || 3000;
+const PORT = parseInt(process.env.PORT || "3000", 10);
 
 // ============================================
 // Middleware
@@ -27,12 +27,17 @@ app.use(express.json());
 // Parse URL-encoded request bodies
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files (frontend)
-app.use(express.static(path.join(__dirname, "../public")));
-
 // ============================================
 // Routes
 // ============================================
+
+// Landing page (root route) - must be before static to take precedence over public/index.html
+app.get("/", (_req, res) => {
+  res.sendFile(path.join(__dirname, "./landing.html"));
+});
+
+// Serve static files (frontend)
+app.use(express.static(path.join(__dirname, "../public")));
 
 // Health check
 app.use("/health", healthRoutes);
@@ -56,12 +61,13 @@ app.use(errorHandler);
 // Start Server
 // ============================================
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log("Reportheld REST API - Week 1 Prototype");
   console.log(`Server running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
   console.log(`Frontend: http://localhost:${PORT}`);
   console.log(`API: http://localhost:${PORT}/api/v1`);
 });
+
 
 export default app;

@@ -29,6 +29,7 @@ RUN npm ci --only=production
 # Copy built files from builder
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/public ./public
+COPY --from=builder /app/src/landing.html ./dist/landing.html
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
